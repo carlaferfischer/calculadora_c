@@ -3,6 +3,8 @@ namespace calculadora_2
     public partial class Form1 : Form
     {
         decimal calculo;
+        decimal percent;
+        decimal calc;
         bool adicao = false;
         bool subtracao = false;
         bool multiplicacao = false;
@@ -160,8 +162,17 @@ namespace calculadora_2
 
         private void btnPorcento_Click(object sender, EventArgs e)
         {
+            calculo = Convert.ToDecimal(txtResultado.Text);
+
             txtOperacao.Text += "%";
             txtResultado.Text = "";
+
+            adicao = false;
+            subtracao = false;
+            multiplicacao = false;
+            divisao = false;
+            porcento = true;
+            quadrado = false;
         }
 
         private void btnIgual_Click(object sender, EventArgs e)
@@ -195,7 +206,10 @@ namespace calculadora_2
 
             if (porcento == true)
             {
-                txtResultado.Text = Convert.ToString(calculo/100 * Convert.ToDecimal(txtResultado.Text));
+                percent = Convert.ToDecimal(txtResultado.Text);
+                calc = percent / 100;
+
+                txtResultado.Text = Convert.ToString(calculo * calc);
                 txtOperacao.Text += txtResultado.Text;
             }
 
